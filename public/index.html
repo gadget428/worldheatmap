@@ -68,7 +68,17 @@
 </head>
 
 <body>
-    <h1 style="font-family:comic sans ms; font-color="red"; z-index: 10; position: abosulte; top: 100px; font-size: 75px; text-align: center;">
+	useEffect(() => {
+    document.body.style.background =
+      "linear-gradient(123deg, #76fcff 0%, #f966f8 50%, #e8bba2 100%)";
+    document.body.style.backgroundSize = "400% 400%";
+    document.body.style.animation = "gradientBG 15s ease infinite";
+    return () => {
+      document.body.style.background = null;
+    };
+  }, []);
+
+    <h1 style="font-family:comic sans ms; z-index: 10; position: abosulte; top: 100px; font-size: 75px; text-align: center;">
         Interactive World News Map With Clickable Interface
     </h1>
     <div id="chart_div" style=" width: 95vw; height:80vh; margin: 0; top: 0; overflow: hidden; left: 0;"></div>
