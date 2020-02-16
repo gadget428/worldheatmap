@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+    <script>
+        function drawStatesMap() {
+            var options = {
+                region: 'CA',
+                resolution: 'provinces'
+            };
+            var dimension = "Articles";
+            $.ajax({
+                url: "datProv.json",
+                dataType: "JSON"
+            }).done(function(data) {
+                let statesArray = [
+                    ["Province", dimension]
+                ];
+                $.each(data.datProv, function() {
+                    if (this.Province == "Nova") {
+                        var stateitem = ["Nova Scotia", this[dimension]];
+                        statesArray.push(stateitem);
+                    } else {
+                        var stateitem = [this.Province, this[dimension]];
+                        statesArray.push(stateitem);
+                    }
+
+                });
+                var statesData = google.visualization.arrayToDataTable(statesArray);
+                console.log(statesArray);
+                var chart = new google.visualization.GeoChart(document.getElementById('chart_div'));
+                chart.draw(statesData, options);
+                $("h3").append(" Sorted by  " + dimension);
+            });
+        }
+        google.charts.load('current', {
+            'packages': ['geochart'],
+            // Note: you will need to get a mapsApiKey for your project.
+            // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
+            'mapsApiKey': 'AIzaSyD-9tSrke72PouQMnMX-a7eZSW0jkFMBWY'
+        });
+
+        google.setOnLoadCallback(drawStatesMap);
+    </script>
+</head>
+
+<body>
+    <h1 style="z-index: 10; position: abosulte; top: 100px; font-size: 60px; text-align: center;">
+        World Map
+    </h1>
+    <div id="chart_div" style=" width: 95vw; height:80vh; margin: 0; top: 0; overflow: hidden; left: 0;"></div>
+</body>
+
+</html>

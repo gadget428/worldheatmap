@@ -41,12 +41,9 @@
                         var item = selection[i];
                         if (item.row != null) {
                             message += countries[item.row];
+                            window.location.href = "localhost:8888/" + countries[item.row];
                         }
                     }
-                    if (message == '') {
-                        message = 'nothing';
-                    }
-                    alert('You selected ' + message);
                 }
 
                 google.visualization.events.addListener(chart, 'select', myClickHandler);
@@ -68,19 +65,25 @@
 </head>
 
 <body>
-	useEffect(() => {
-    document.body.style.background =
-      "linear-gradient(123deg, #76fcff 0%, #f966f8 50%, #e8bba2 100%)";
-    document.body.style.backgroundSize = "400% 400%";
-    document.body.style.animation = "gradientBG 15s ease infinite";
-    return () => {
-      document.body.style.background = null;
-    };
-  }, []);
-
-    <h1 style="font-family:comic sans ms; z-index: 10; position: abosulte; top: 100px; font-size: 75px; text-align: center;">
-        Interactive World News Map With Clickable Interface
+    <style>
+        #button {
+            line-height: 12px;
+            width: 18px;
+            font-size: 8pt;
+            font-family: tahoma;
+            margin-top: 1px;
+            margin-right: 2px;
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    </style>
+    <h1 style="font-family: comic sans ms; z-index: 10; position: abosulte; top: 100px; font-size: 60px; text-align: center;">
+        World Map
     </h1>
+    <div id="button">
+        Abc
+    </div>
     <div id="chart_div" style=" width: 95vw; height:80vh; margin: 0; top: 0; overflow: hidden; left: 0;"></div>
 </body>
 
