@@ -12,6 +12,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "fs": "0.0.1-security",
+    "host": "0.0.1",
     "http": "0.0.0",
     "mongodb": "^3.5.3",
     "web": "0.0.2"
