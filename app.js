@@ -30,7 +30,7 @@ let provinces = ["Ontario", "Nova", "B.C", "Quebec", "Alberta"];
 const fs = require('fs');
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://Bullmeza:tanu667@cluster0-k94hv.mongodb.net/test?retryWrites=true&w=majority";
+const uri = "mongodb+srv://Bullmeza:password@cluster0-k94hv.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
     let allData = "";
